@@ -7,7 +7,7 @@ var Disqus = require('disqus'),
     disqus_options = {
         forum: process.env.DISQUS_FORUM,
         related: 'thread',
-        limit: 10
+        limit: process.env.DISQUS_COMMENT_COUNT
     };
 
 module.exports.disqus = disqus;
