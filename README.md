@@ -25,6 +25,6 @@ The `HIPCHAT_ROOM_MENTION` variable is **optional**, it will send an additional 
 ##Notes
 This application was built using:
 * [node-disqus](https://github.com/hay/node-disqus)
-* [node-hipchat](https://github.com/nkohari/node-hipchat)
+* [hipchatter](https://github.com/charltoons/hipchatter)
 * [cron](https://github.com/ncb000gt/node-cron)
 
