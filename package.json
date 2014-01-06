@@ -7,6 +7,10 @@
     "email": "jonathanwiesel@gmail.com",
     "url": "http://github.com/jonathanwiesel"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathanwiesel/Diqus-HipChatV2-Notifier.git"
+  },
   "keywords": [
     "disqus",
     "hipchat",
