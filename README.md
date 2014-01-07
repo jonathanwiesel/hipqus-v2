@@ -1,4 +1,4 @@
-#Diqus-HipChat Notifier
+#hipqus
 ***
 This simple application monitors a Disqus forum and sends a notification to HipChat rooms when a new comment is made in said forum. Can be easily deployed to Heroku. You only need to set the following enviroment variables:
 

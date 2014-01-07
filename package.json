@@ -1,7 +1,7 @@
 {
-  "name": "Diqus-HipChatV2_Notifier",
+  "name": "hipqus",
   "description": "New disqus' comment notifier for HipChat",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": {
     "name": "Jonathan Wiesel",
     "email": "jonathanwiesel@gmail.com",
@@ -9,14 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jonathanwiesel/Diqus-HipChatV2-Notifier.git"
+    "url": "https://github.com/jonathanwiesel/hipqus.git"
   },
   "keywords": [
     "disqus",
     "hipchat",
     "comment",
     "api",
-    "notify"
+    "notify",
+    "hipqus"
   ],
   "scripts": {
     "start": "node app.js"
