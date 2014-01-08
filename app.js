@@ -1,5 +1,5 @@
 var cronJob = require('cron').CronJob,
-    hipchat = require('./hipchat.js'),
+    hipqus = require('./hipqus.js'),
     D  = require('./disqus-config.js');
 
 var lastTimestamp = null;
@@ -22,7 +22,7 @@ new cronJob('*/10 * * * * *', function (){
                 for(var i=0; i < response.length; i++){
                     var postDate = new Date(response[i].createdAt);
                     if(postDate > lastTimestamp){
-                        hipchat.buildMessage(response[i]);
+                        hipqus.buildMessage(response[i]);
                         if(!mostRecentTimestamp){
                             mostRecentTimestamp = postDate;
                         }

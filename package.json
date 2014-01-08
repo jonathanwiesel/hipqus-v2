@@ -1,6 +1,6 @@
 {
-  "name": "hipqus",
-  "description": "New disqus' comment notifier for HipChat",
+  "name": "hipqusV2",
+  "description": "New disqus' comment notifier for HipChat API v2",
   "version": "0.5.1",
   "author": {
     "name": "Jonathan Wiesel",
