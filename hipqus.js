@@ -4,65 +4,72 @@ var Hipchat     =   require('hipchatter'),
     roomTokens  =   process.env.HIPCHAT_ROOM_TOKEN.split('-'),
     params      =   { color: 'green', notify: true };
 
-var buildMessage = function (comment){
+var Hipqus = function(){}
 
-    var commentDate = new Date(comment.createdAt);
+Hipqus.prototype = {
 
-    var url = comment.thread.link + '#comment-' + comment.id;
+    buildMessage: function (comment, callback){
 
-    var message = '<b>' + comment.author.name + '</b> created <a href="'+ url +'"> a new comment</a>';
-    message += ' on entry <a href="'+ comment.thread.link +'">' +  comment.thread.title + '</a>:<br>';
-    message += comment.message;
-    message = message.replace(/<p>/g, '').replace(/<\/p>/g, '<br>');
+        var commentDate = new Date(comment.createdAt);
 
-    sendMessage(message);
-}
+        var url = comment.thread.link + '#comment-' + comment.id;
 
+        var message = '<b>' + comment.author.name + '</b> created <a href="'+ url +'"> a new comment</a>';
+        message += ' on entry <a href="'+ comment.thread.link +'">' +  comment.thread.title + '</a>:<br>';
+        message += comment.message;
+        message = message.replace(/<p>/g, '').replace(/<\/p>/g, '<br>');
 
-function sendMessage(message){
-
-    params.message = message;
-    params.message_format = 'html';
-
-    for(var k=0; k < rooms.length; k++){
-
-        params.token = roomTokens[k];
-
-        hip.notify(rooms[k], params, function(err) {
-            if(err){
-                console.log(err);
-            }else{
-                console.log('New Disqus comment!. Message sent to Hipchat room.');
-            }
-        });
-    }
-
-    if(process.env.HIPCHAT_ROOM_MENTION){
-        sendMetions();
-    }
-}
+        callback(message);
+    },
 
 
-function sendMetions(){
+    sendMessage: function(message, callback){
 
-    var mentionsVar =   process.env.HIPCHAT_ROOM_MENTION.split('-');
-    for(var k=0; k < rooms.length; k++){
+        params.message = message;
+        params.message_format = 'html';
 
-        var mentions = '';
-        for(var j=0; j < mentionsVar.length; j++){
-            mentions += ' @' + mentionsVar[j];
+        for(var k=0; k < rooms.length; k++){
+
+            params.token = roomTokens[k];
+
+            hip.notify(rooms[k], params, function(err) {
+                if(err) callback(err, 'Error notifying room');
+                else callback(null, 'New Disqus comment!. Message sent to Hipchat room.');
+            });
         }
-        var mentionMessage = 'Alerting' + mentions + ' about new comment.';
+    },
 
-        params.message = mentionMessage;
-        params.message_format = 'text';
-        params.token = roomTokens[k];
+    prepareMentions: function(mentions, callback){
 
-        hip.notify(rooms[k], params, function(data) {
-            console.log('Mentioning alert sent.');
-        });
+        var paramsArray = [];
+        var mentionsArray = mentions.split('-');
+        for(var k=0; k < rooms.length; k++){
+
+            var mentions = '';
+            for(var j=0; j < mentionsArray.length; j++){
+                mentions += ' @' + mentionsArray[j];
+            }
+            var mentionMessage = 'Alerting' + mentions + ' about new comment.';
+
+            params.message = mentionMessage;
+            params.message_format = 'text';
+            params.token = roomTokens[k];
+
+            paramsArray.push(params);
+
+        }
+
+        callback(paramsArray);
+    },
+
+    sendMentions: function(paramsArray){
+
+        for(var k=0; k < rooms.length; k++){
+            hip.notify(rooms[k], paramsArray[k], function(data) {
+                console.log('Mentioning alert sent.');
+            });
+        }
     }
 }
 
-
-module.exports.buildMessage = buildMessage;
+module.exports = Hipqus;
