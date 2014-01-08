@@ -14,6 +14,12 @@ HIPCHAT_ROOM_TOKEN=room1_token-room2_token
 HIPCHAT_ROOM_MENTION=JonathanWiesel-here-all-...    # optional
 ```
 
+And install dependent modules:
+
+```sh
+$ npm install
+```
+
 The server will request every 10 seconds the 10 most recent comments (according to what's stated in the `DISQUS_COMMENT_COUNT` variable). If you consider that your forum could recieve more than 10 new comments in a 10 second window, feel free to increase that variable's number.
 
 Notice that if you want to support multiple rooms you **MUST** specify the same order for the rooms and tokens.
