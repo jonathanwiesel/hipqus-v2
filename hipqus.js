@@ -10,9 +10,10 @@ var buildMessage = function (comment){
 
     var url = comment.thread.link + '#comment-' + comment.id;
 
-    var message = '<p><b>' + comment.author.name + '</b> created <a href="'+ url +'"> a new comment</a>';
-    message += ' on entry <a href="'+ comment.thread.link +'">' +  comment.thread.title + '</a>:</p><br>';
+    var message = '<b>' + comment.author.name + '</b> created <a href="'+ url +'"> a new comment</a>';
+    message += ' on entry <a href="'+ comment.thread.link +'">' +  comment.thread.title + '</a>:<br>';
     message += comment.message;
+    message = message.replace(/<p>/g, '').replace(/<\/p>/g, '<br>');
 
     sendMessage(message);
 }
