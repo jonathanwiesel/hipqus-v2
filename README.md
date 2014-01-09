@@ -1,6 +1,6 @@
 #hipqus-v2
 ***
-This simple application monitors a Disqus forum and sends a notification to HipChat (API v2) rooms when a new comment is made in said forum. Can be easily deployed to Heroku. You only need to set the following enviroment variables:
+This simple application monitors a Disqus forum and sends a notification to HipChat (API v2) rooms when a new comment is made in said forum. Can be easily deployed to Heroku. You only need to set the following environment variables:
 
 ```
 DISQUS_API_KEY=disqus_api_key
