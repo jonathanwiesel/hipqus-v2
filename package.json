@@ -1,7 +1,7 @@
 {
   "name": "hipqus-v2",
   "description": "New disqus' comment notifier for HipChat API v2",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "author": {
     "name": "Jonathan Wiesel",
     "email": "jonathanwiesel@gmail.com",
@@ -33,7 +33,6 @@
   "dependencies": {
     "disqus":"0.1.0",
     "cron":"1.0.1",
-    "hipchatter":"0.0.8",
-    "async": "0.2.9"
+    "hipchatter":"0.1.0"
   }
 }
