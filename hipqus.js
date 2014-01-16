@@ -28,15 +28,17 @@ Hipqus.prototype = {
         params.message = message;
         params.message_format = 'html';
 
+        error = null;
         for(var k=0; k < rooms.length; k++){
 
             params.token = roomTokens[k];
 
             hip.notify(rooms[k], params, function(err) {
-                if(err) callback(err, 'Error notifying room');
-                else callback(null, 'New Disqus comment!. Message sent to Hipchat room.');
+                if(err) error = err;
             });
         }
+        if(error) callback(error, 'Error notifying room');
+        else callback(null,'New Disqus comment!. Message sent to Hipchat rooms.');
     },
 
     prepareMentions: function(mentions, callback){
