@@ -36,3 +36,8 @@ This application was built using:
 * [hipchatter](https://github.com/charltoons/hipchatter)
 * [cron](https://github.com/ncb000gt/node-cron)
 
+***
+
+## License
+
+[http://jonathanwiesel.mit-license.org/](http://jonathanwiesel.mit-license.org/)
