@@ -1,0 +1,28 @@
+{
+  "name": "Hipqus Sample",
+  "description": "Disqus monitor and notification sender to Hipchat",
+  "repository": "https://github.com/jonathanwiesel/hipqus-v2",
+  "keywords": [
+    "hipchat",
+    "disqus",
+    "blog"
+  ],
+  "env": {
+    "DISQUS_API_KEY": "",
+    "DISQUS_API_SECRET": "",
+    "DISQUS_API_ACCESS_TOKEN": "",
+    "DISQUS_FORUM": "",
+    "DISQUS_COMMENT_COUNT": "10",
+    "HIPCHAT_ROOM_ID": {
+      "description": "Separate multiple rooms by a dash (-)"
+    },
+    "HIPCHAT_ROOM_TOKEN": {
+      "description": "Separate multiple room tokens by a dash (-). Each Room Id must have a matching room token."
+    },
+    "HIPCHAT_ROOM_MENTION": {
+      "required": false,
+      "description": "People you want to mention when notification arrives. Separate multiple with dash (-)",
+      "value": "all"
+    }
+  }
+}
